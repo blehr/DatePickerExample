@@ -1,3 +1,3 @@
 # DatePickerExample
 
-Just a small project demostrating how to use an Android datePickerFragment
+Just a small project demonstrating how to use an Android datePickerFragment
