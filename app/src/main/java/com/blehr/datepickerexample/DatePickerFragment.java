@@ -44,7 +44,7 @@ public class DatePickerFragment extends AppCompatDialogFragment implements DateP
         getTargetFragment().onActivityResult(
                 getTargetRequestCode(),
                 Activity.RESULT_OK,
-                new Intent().putExtra("requestDate", selectedDate)
+                new Intent().putExtra("selectedDate", selectedDate)
         );
     }
 }

@@ -19,6 +19,8 @@ public class MyFragment extends Fragment {
 
     EditText dateOfBirthET;
     String selectedDate;
+
+    EditText ssnET;
     public static final int REQUEST_CODE = 11; // Used to identify the result
 
     private OnFragmentInteractionListener mListener;
@@ -40,9 +42,19 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my, container, false);
+
+        // get reference to edit text
         dateOfBirthET = view.findViewById(R.id.dateOfBirthET);
+
+        // apply the input mask
+        dateOfBirthET.addTextChangedListener(new DateMask());
+
+        // get reference to edit text
+        ssnET = view.findViewById(R.id.ssnET);
+
+        // apply the input mask
+        ssnET.addTextChangedListener(new SsnMask());
 
 
         // get fragment manager so we can launch from fragment
@@ -69,7 +81,7 @@ public class MyFragment extends Fragment {
         // check for the results
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             // get date from string
-            selectedDate = data.getStringExtra("requestDate");
+            selectedDate = data.getStringExtra("selectedDate");
             // set the value of the editText
             dateOfBirthET.setText(selectedDate);
         }
